@@ -1,0 +1,23 @@
+.span10 .item {
+	height: 130px;
+	float: left;
+	margin: 10px;
+}
+
+.span2 .item {
+	width: 100%;
+	height: 110px;
+	margin: 10px;
+	float: left;
+}
+
+.span10 img {
+	width: 188px;
+	height : 128px;
+}
+
+img {
+	width: 148px;
+	height: 148px;
+}
+
