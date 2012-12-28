@@ -1,5 +1,4 @@
-function generateDivs(files) {
-	var file = files[0];
+function generateDivs(file) {
 	return $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
 /**
 	return _.map(files, function(file) { 
@@ -21,9 +20,9 @@ $(function(){
 			queue: false
 		}
 	});
-	for(file in files) {
-		var divs = generateDivs(files);
-		$('#container').append(divs).masonry('appended', divs);
+	for(var i = 0; i < files.length; i++) {
+		var div = generateDivs(files[i]);
+		$('#container').append(div).masonry('appended', div);
 	}
 	$('#container2').masonry({
 		itemSelector : '.item',
@@ -36,9 +35,12 @@ $(function(){
 	});
 	$(".item").click(function() {
 		if (home) {
-			var items = $(".item").not(this);
-			$('#container2').append(items).masonry('appended', items);
-			$('#container').masonry('reload');
+			for(var i = 0; i < files.length; i++) {
+				var div = generateDivs(files[i]);
+				$('#container2').append(div).masonry('appended', div);
+			}
+			$('#container').toggle();
+			load_markdown('markdown/' + this.id + '.md', $(".span10"));
 		}
 		home = false;
 	});

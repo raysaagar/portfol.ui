@@ -1,31 +1,11 @@
-//var converter = new Showdown.converter();
-            
-var mdfile = 'testmark.md';
 var converter = new Showdown.converter();
 
-
-
-
-var mdcontents = '';
-
-$(document).ready(function(){
-    $('#loadbtn').on("click",load_markdown);
-    $('#convertbtn').on("click",convert_markdown);
-    
-});
-
-function load_markdown(){
+function load_markdown(mdfile, div){
     $.get(mdfile, function(data) {
-        $('#result').html(data);
-        mdcontents = data;
+		convert_markdown(data, div);
     });
-    
-    
-    
 };
 
-function convert_markdown(){
-    
-    $('#output').html(converter.makeHtml(mdcontents));
-
+function convert_markdown(mdcontents) {
+    div.html(converter.makeHtml(mdcontents));
 }
