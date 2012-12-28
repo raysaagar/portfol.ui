@@ -1,15 +1,51 @@
-function generateDivs(file) {
-	return $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
-/**
-	return _.map(files, function(file) { 
-		return $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>')[0]; 
-	});
-**/
-}
-
 var files = ['test1','test2','test3','test4','test5','test6','test7'];
 
-var home = true;
+var view = 'home';
+
+function generateDivs(file) {
+	return $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
+}
+
+function clear(container) {
+	var s = container + ' .item';
+	var divs = $(s);
+	for(var index in $(s)) {
+		var div = divs[index].id;
+		$(container).masonry('remove', $(container + ' #' + div));
+	}
+}
+
+function reload(container) {
+	$(container).masonry('reload');	
+}
+
+function fill(container, id) {
+	for(i in files) {
+		var file = files[i];
+		if (file != id) {
+			var div = generateDivs(file);
+			$(container).append(div).masonry('appended', div);
+		}
+	}
+}
+
+function rebind() {
+	$(".item").click(function() {
+		if (view == 'home') {
+			// $('#container').toggle();
+			clear('#container');
+			fill('#container2', this.id);
+			reload('#container2');
+		} else {
+			clear('#container2');
+			fill('#container2', this.id);
+			reload('#container2');
+		}
+		view = this.id;
+		rebind();
+	});
+}
+
 $(function(){
 	$('#container').masonry({
 		itemSelector : '.item',
@@ -20,10 +56,7 @@ $(function(){
 			queue: false
 		}
 	});
-	for(var i = 0; i < files.length; i++) {
-		var div = generateDivs(files[i]);
-		$('#container').append(div).masonry('appended', div);
-	}
+	fill('#container', "");
 	$('#container2').masonry({
 		itemSelector : '.item',
 		isAnimated: true,
@@ -33,15 +66,5 @@ $(function(){
 			queue: false
 		}
 	});
-	$(".item").click(function() {
-		if (home) {
-			for(var i = 0; i < files.length; i++) {
-				var div = generateDivs(files[i]);
-				$('#container2').append(div).masonry('appended', div);
-			}
-			$('#container').toggle();
-			load_markdown('markdown/' + this.id + '.md', $(".span10"));
-		}
-		home = false;
-	});
+	rebind();
 });
