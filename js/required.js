@@ -19,18 +19,21 @@ var converter = new Showdown.converter();
 */
 
 function load_markdown(map){
-    
-    $.get(map.data.mdfile, function(data) {
-        alert(data);
-		convert_markdown(data, map.data.div);
+    load_markdown(map.data.mdfile, map.data.div);
+};
+
+function load_markdown(mdfile, div){
+    $.get(mdfile, function(data) {
+        convert_markdown(data, div);
     });
 };
 
 function convert_markdown(mdcontents,div) {
-    $(div).html(converter.makeHtml(mdcontents));
+    div.html(converter.makeHtml(mdcontents));
 }
-
+/**
 $(document).ready(function(){
     $('#loadbtn').on("click",{mdfile: "markdown/test.md", div: "#output"}, load_markdown);
     //$('#convertbtn').on("click",convert_markdown);
 });
+*/

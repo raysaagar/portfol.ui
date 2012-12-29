@@ -32,17 +32,15 @@ function fill(container, id) {
 function rebind() {
 	$(".item").click(function() {
 		if (view == 'home') {
-			// $('#container').toggle();
 			clear('#container');
-			fill('#container2', this.id);
-			reload('#container2');
 		} else {
 			clear('#container2');
-			fill('#container2', this.id);
-			reload('#container2');
 		}
+		fill('#container2', this.id);
+		reload('#container2');
 		view = this.id;
 		rebind();
+		load_markdown('markdown/' + view + '.md', $('#container'));
 	});
 }
 
