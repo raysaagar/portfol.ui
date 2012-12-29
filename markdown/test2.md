@@ -1,4 +1,4 @@
-# Parallel Sequitur #
+# Parallel Sequitur2 #
 
 ## Computer Science 205 Fall 2012
 

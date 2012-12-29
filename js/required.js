@@ -23,7 +23,7 @@ function load_markdown(map){
 };
 
 function load_markdown(mdfile, div){
-    $.get(mdfile, function(data) {
+    $.get(mdfile, {"_" : $.now()} , function(data) {
         convert_markdown(data, div);
     });
 };
