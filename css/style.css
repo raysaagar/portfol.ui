@@ -6,55 +6,32 @@ body{
 	margin: 0px;
 	padding: 0px;
     /*background-color: blue;*/
-    background-image:url('http://www.hdwallpapers.in/wallpapers/abstract_color_background_picture_8016-1280x800.jpg');
+    
+    /* background image full screen with css3 - we're being progressive! */
+    /* photo credit to David Kennard for the testing image */
+    background: url('http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+    /* some sort of IE hack */
+    /* from: http://css-tricks.com/perfect-full-page-background-image/ */
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg', sizingMethod='scale')";
     
 }
 
 #menu{
 	background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
-    background: rgba(0,0,0, .5);
+    background: rgba(0,0,0, .6); /* Black menu + 60% opacity */
 	width: 200px;
 	height: 100%;
     
-    color: red;
+    color: red; /* for text now */
     
-	position: relative;
+	position: absolute; /* hacky but push menu on top */
     top: 0;
     left: 100;
     z-index: 999;
     
-}
-
-#container {
-    position: absolute;
-    width: 300px; height: 200px;
-    top: 0;
-    left: 400;
-    z-index: 999;
-}
-#block  {
-    background: #000;
-    filter:alpha(opacity=30); /* IE */
-    -moz-opacity:0.3; /* Mozilla */
-    opacity: 0.3; /* CSS3 */
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%; width:100%;
-}
-#text {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    color: red;
-}
-
-#footer{
-	/*bottom:0;*/
-	background-color: #CE0A0A;
-	font-size: 12px;
-	width: auto;
-	min-height: 75px;
-	height: 4em;
-	text-align: center;
-}
-
+}/

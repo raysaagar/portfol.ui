@@ -44,6 +44,11 @@ function rebind() {
 	});
 }
 
+/**
+ * Fire after DOM load
+ *
+ **/
+
 $(function(){
 	$('#container').masonry({
 		itemSelector : '.item',
