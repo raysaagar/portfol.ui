@@ -1,47 +1,50 @@
-<html>
-
-
-    <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-    <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-    <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-    <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--<html>-->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
     <head>
-        <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
         
         <title> Portfolio </title>
         
         <!-- The Scripts (should probably load at end...) -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script src="js/jquery.masonry.min.js"></script>
-		<script src="js/underscore-min.js"></script>
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/jquery.masonry.min.js"></script>
+        <script src="js/underscore-min.js"></script>
         <script src="js/showdown/showdown.js"></script>
         <script src="js/tipTipv13/jquery.tipTip.minified.js"></script>
         <script src="js/required.js"/></script>
-		<script src="js/script.js"></script>
+        <script src="js/script.js"></script>
         
         <!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/demo.css">
-        <link rel="stylesheet" type="text/css" href="css/brandico.css">
+        <link rel="stylesheet" type="text/css" href="css/brandico/brandico.css">
+        <!--[if IE 7 ]><link rel="stylesheet" type="text/css" href="css/FontAwesome/font-awesome-ie7.css"><![endif]-->
         <link rel="stylesheet" type="text/css" href="css/tipTip.css">
         
         <script>
             // load tipTip tooltips
             $(function(){
                 $(".icons").tipTip({maxWidth: "auto", edgeOffset: 10});
+                $("#credits").tipTip({maxWidth: "auto", edgeOffset: 10});
             });
         </script>
 
 	</head>
+    
 	<body>
         
         <div class="row-fluid">
             <div class="span3">
+                <!-- Menu Box on left top corner -->
+                <div id="controls">
+                    <a href=#><span id="credits" title="Fork me on Github!">See Portfol.ui on Github!</span></a>
+                    <a href="#"><i class="icons icon-refresh" title="Reset Tiles!"></i></a>
+                </div>
             <!--
                 <div id="menu">
                     <div id="firstname">Elridge </div>
@@ -67,10 +70,10 @@
                             <div id="tagitem"> Hacker </div>
                             <div id="tagitem"> Student </div>
                             <div id="tagitem"> 
-                                <a href="#"><i class="icons icon-github-text" title="Github"></i></a> | 
-                                <a href="#"><i class="icons icon-linkedin-rect" title="LinkedIn"></i></a> | 
-                                <a href="#"><i class="icons icon-twitter-bird" title="Twitter"></i></a> |
-                                <a href="#"><i class="icons icon-odnoklassniki" title="Resume"></i></a>
+                                <a href="#"><i class="icons icon-user" title="Resume"></i></a> |
+                                <a href="#"><i class="icons b-icon-github-text" title="Github"></i></a> | 
+                                <a href="#"><i class="icons b-icon-linkedin-rect" title="LinkedIn"></i></a> | 
+                                <a href="#"><i class="icons b-icon-twitter-bird" title="Twitter"></i></a>
                             </div>
                             
                         </div>
@@ -98,12 +101,12 @@
                 Link 4 <br>
             </div>
             -->
-			<div class="span10">
+			<div class="span9">
 				<div id = "container">
                 
 				</div>
 			</div>
-			<div class="span2">
+			<div class="span3">
 				<div>
 					<div id="container2">
 					</div>

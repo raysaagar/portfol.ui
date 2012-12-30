@@ -2242,7 +2242,8 @@ table th[class*="span"],
 .table-hover tbody tr.info:hover td {
   background-color: #c4e3f3;
 }
-
+/* Uncomment this should you want to use default bootstrap icons */
+/*
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -2256,9 +2257,9 @@ table th[class*="span"],
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
-
+*/
 /* White icons with optional class, or on hover/active states of certain elements */
-
+/*
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
 .nav-pills > .active > a > [class*=" icon-"],
@@ -2836,7 +2837,7 @@ table th[class*="span"],
 .icon-fullscreen {
   background-position: -456px -144px;
 }
-
+*/
 .dropup,
 .dropdown {
   position: relative;

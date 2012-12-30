@@ -4,6 +4,19 @@
 	margin: 10px;
 }
 
+.span9 .item {
+	height: 130px;
+	float: left;
+	margin: 10px;
+}
+
+.span3 .item {
+	width: 40%;
+	height: 110px;
+	margin: 10px;
+	float: left;
+}
+
 .span2 .item {
 	width: 100%;
 	height: 110px;
@@ -16,6 +29,10 @@
 	height : 128px;
 }
 
+.span9 img {
+	width: 188px;
+	height : 128px;
+}
 .span8 img {
 	width: 188px;
 	height : 128px;
@@ -28,36 +45,42 @@ img {
 
 #content-area {
     height: 100%;
-    margin: 75 0 0 0;
+    margin: 20 0 0 0;
 }
 
-.masonry{
-    height: 100%;
-
+#container{
+    margin: 0 0 0 50;
+    padding: 10;
 }
+
+#container2{
+    margin: 0 0 0 10;
+    
+}
+
 
 /* scroll bar effect from http://css-tricks.com/custom-scrollbars-in-webkit/ */
 /* want to use for masonry containers */
 
 /* Let's get this party started */
-::-webkit-scrollbar {
+#container::-webkit-scrollbar{
     width: 6px;
 }
  
 /* Track */
-::-webkit-scrollbar-track {
+#container::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
  
 /* Handle */
-::-webkit-scrollbar-thumb {
+#container::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: rgba(255,0,0,0.8); 
+    background: rgba(63,71,63,0.5); 
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
-::-webkit-scrollbar-thumb:window-inactive {
+#container::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(255,0,0,0.4); 
 }

@@ -32,11 +32,7 @@ body{
     color: white; /* for text right now */
     
 	position: fixed; /* left side fixed */
-    /*
-    top: 0;
-    left: 100;
-    z-index: 999;
-    */
+    
 }
 
 #nametag{
@@ -44,6 +40,24 @@ body{
     background: rgba(0,0,0, .6); /* Black menu + 60% opacity */
 	width: 93%;
 	height: 100px;
+    padding: 10;
+    position: relative; 
+    
+    color: white; /* for text now */
+    
+    /*
+    top: 0;
+    left: 100;
+    */
+    z-index: 999;
+
+}
+
+#controls{
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
+    background: rgba(0,0,0, .2); /* Black menu + 60% opacity */
+	width: 50%;
+	height: 20px;
     padding: 10;
     position: relative; 
     
@@ -89,4 +103,20 @@ body{
 #tagline{
     color: gray;
 
+}
+
+.icons{
+    color: #08C;
+    text-decoration: none;
+}
+
+.icons:hover{
+    color:#005580;
+    text-decoration: none;
+}
+
+#credits{
+    color: gray;
+    font-size: 80%;
+    margin: 0 10 0 0;
 }

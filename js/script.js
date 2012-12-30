@@ -21,10 +21,11 @@ function reload(container) {
     /* update css for masonry container */
     
     // set height and overflow
+    $('#container').css({'background': 'rgba(54,25,25)', 'background': 'rgba(0,0,0,.6)'});
+    $('#container').css({'color':'#B1BBB2'});
     $(".masonry").css({'height': '500px', 'overflow': 'auto'});
     // set background with transparency, rbg for fall back
-    $(".masonry").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
-    $("#container").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
+    //$(".masonry").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
     
 }
 
