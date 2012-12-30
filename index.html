@@ -1,5 +1,15 @@
 <html>
-	<head>
+
+
+    <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+    <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+    <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+    <head>
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
         
         <title> Portfolio </title>
         
@@ -7,27 +17,42 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="js/jquery.masonry.min.js"></script>
 		<script src="js/underscore-min.js"></script>
-        <script src="js/showdown/showdown.js"/></script>
+        <script src="js/showdown/showdown.js"></script>
+        <script src="js/tipTipv13/jquery.tipTip.minified.js"></script>
         <script src="js/required.js"/></script>
 		<script src="js/script.js"></script>
         
         <!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/demo.css">
+        <link rel="stylesheet" type="text/css" href="css/brandico.css">
+        <link rel="stylesheet" type="text/css" href="css/tipTip.css">
+        
+        <script>
+            // load tipTip tooltips
+            $(function(){
+                $(".icons").tipTip({maxWidth: "auto", edgeOffset: 10});
+            });
+        </script>
+
 	</head>
 	<body>
         
         <div class="row-fluid">
             <div class="span3">
+            <!--
                 <div id="menu">
-                    Name <br>
-                    Link 1 <br>
-                    Link 2 <br>
-                    Link 3 <br>
-                    Link 4 <br>
+                    <div id="firstname">Elridge </div>
+                    <div id="lastname">Powerhacks </div>
+                    <div class="icon-github-text"></div> Github <br>
+                    <i class="icon-linkedin-rect"></i> LinkedIn <br>
+                    <i class="icon-twitter-bird"></i> Twitter <br>
+                    Blog <br>
+                    Contact Me <br>
                 </div>
-
+            -->
             </div>
             <div class="span6"></div>
             <div class="span3">
@@ -41,6 +66,12 @@
                             <div id="tagitem"> Programmer </div>
                             <div id="tagitem"> Hacker </div>
                             <div id="tagitem"> Student </div>
+                            <div id="tagitem"> 
+                                <a href="#"><i class="icons icon-github-text" title="Github"></i></a> | 
+                                <a href="#"><i class="icons icon-linkedin-rect" title="LinkedIn"></i></a> | 
+                                <a href="#"><i class="icons icon-twitter-bird" title="Twitter"></i></a> |
+                                <a href="#"><i class="icons icon-odnoklassniki" title="Resume"></i></a>
+                            </div>
                             
                         </div>
                     </div>
@@ -56,9 +87,9 @@
         
         
 		<div id="content-area" class="row-fluid">
+            <!--
             <div class="span2">
             </div>
-            <!--
             <div id="menu" class="span2">
                 Name <br>
                 Link 1 <br>
@@ -67,7 +98,7 @@
                 Link 4 <br>
             </div>
             -->
-			<div class="span8">
+			<div class="span10">
 				<div id = "container">
                 
 				</div>

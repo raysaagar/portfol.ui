@@ -17,12 +17,14 @@ function clear(container) {
 
 function reload(container) {
 	$(container).masonry('reload');	
-    // update css for masonry container
+    
+    /* update css for masonry container */
     
     // set height and overflow
     $(".masonry").css({'height': '500px', 'overflow': 'auto'});
     // set background with transparency, rbg for fall back
     $(".masonry").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
+    $("#container").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
     
 }
 
