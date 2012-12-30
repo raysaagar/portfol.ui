@@ -4,29 +4,26 @@ var view = 'home';
 
 var canClick = true;
 
-function generateDivs(id) {
-	var str_divs = _.foldl(files, function(memo, ele) { 
-		if (ele != id) {
-			var str = '<div class="item" id="' + ele + '"><img src="images/' + ele + '.jpg"></div>';
-		} else {
-			var str = ""
-		}
-		return memo + str;
-	}, "");
-	return $(str_divs).click(function() {
-		if (!canClick)
-			return;
-		var callback_method = function() { 
-			load_markdown('markdown/' + view + '.md', $('#container'));
-			reload('#container2');
-		};
+/**
+ * Binding on Click to an item
+ * Contains most of the logic
+ */
+
+function bindItemClick(items) {
+	return items.click(function() {
 		if (view == 'home') {
 			view = this.id;
-			clear('#container', callback_method);
+			// We need to wait for all elements to have been removed
+			clear('#container', function() { 
+				load_markdown('markdown/' + view + '.md', $('#container'));
+				$('#container').addClass('markdown');
+			});
 			fill('#container2', view);
 		} else {
 			view = this.id;
-			callback_method();
+			// We don't need to wait for anything to load
+			load_markdown('markdown/' + view + '.md', $('#container'));
+			// Get the Missing File
 			var missFile = getMissingFile('#container2');
 			if (missFile)
 				$('#container2').isotope('insert', generateDiv(missFile))
@@ -35,27 +32,41 @@ function generateDivs(id) {
 	});
 }
 
-function generateDiv(file) {
-	var item = $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
-	item.click(function() {
-		if (!canClick)
-			return;
-		if (view == 'home') {
-			clear('#container', function() { 
-				load_markdown('markdown/' + view + '.md', $('#container'));
-				reload('#container2');
-			});
-			fill('#container2', this.id);
-		} else {
-			var missFile = getMissingFile('#container2');
-			if (missFile)
-				$('#container2').isotope('insert', generateDiv(missFile))
-							.isotope('remove', $('#container2 #' + this.id));
-		}
-		view = this.id;
-	});
-	return item;
+/**
+ * Generates the String for creating a div
+ */
+
+function genDivStr(ele) {
+	return '<div class="item" id="' + ele + '"><img src="images/' + ele + '.jpg"></div>'
 }
+
+/**
+ * Generates Divs for all of files except for id
+ */
+
+function generateDivs(id) {
+	var str_divs = _.foldl(files, function(memo, ele) { 
+		if (ele != id) {
+			var str = genDivStr(ele);
+		} else {
+			var str = ""
+		}
+		return memo + str;
+	}, "");
+	return bindItemClick($(str_divs));
+}
+
+/**
+ * Generates a Div for a file
+ */
+function generateDiv(file) {
+	var item = genDivStr(file);
+	return bindItemClick($(item));
+}
+
+/**
+ * Removes all items inside a container
+ */
 
 function clear(container, callback) {
 	var s = container + ' .item';
@@ -63,38 +74,49 @@ function clear(container, callback) {
 }
 
 function reload(container) {
-    /* update css for masonry container */
-    
-    // set height and overflow
-    $('#container').css({'background': 'rgba(54,25,25)', 'background': 'rgba(0,0,0,.6)'});
-    $('#container').css({'color':'#B1BBB2'});
-    $(".isotope").css({'height': '500px', 'overflow': 'auto'});
-    // set background with transparency, rbg for fall back
-    //$(".masonry").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
-    
 }
+
+/**
+ * Find the missing file in the items. There will be one item that is missing when in sidebar view.
+ */
 
 function getMissingFile(container) {
 	var s = container + ' .item';
 	var not_removed = _.filter($(s), function(ele) { return ele.style.opacity == 1; })
 	var ids = _.map(not_removed, function(ele) { return ele.id });
-	for (i in files) {
-		var file = files[i];
-		var contains_file = _.foldl(ids, function(memo, ele) { return memo || (ele == file)}, false );
-		if(!contains_file) {
-			return file;
-		}
-	}
+	return _.difference(files, ids)[0];
 }
+
+/**
+ * Filling in a container with all objects except for id
+ * Set id = "" if you want to insert all items
+ */ 
 
 function fill(container, id, callback) {
 	$(container).isotope('insert', generateDivs(id), callback);
 }
 
-function refresh() {
+/**
+ * Go to Viewer
+ */
+
+
+
+/** 
+ * Go to Home Page
+ */
+
+function goToHome() {
+	// clean up markdown in container
+	$('#container').html("");
+	// fill in the container with the files
 	fill('#container', "");
+	// remove all items in side bar container
 	clear('#container2');
+	// set view to home
 	view = 'home';
+	// toggle back container to not showing markdown
+	$('#container').removeClass('markdown');
 }
 
 /**
@@ -113,7 +135,8 @@ $(function(){
         sortBy : 'name',
         layoutMode : 'masonry',
 		animationOptions: {
-			height: 'toggle'
+			duration: 200,
+			easing: 'linear'
         }
 	});
 	$('#container2').isotope({
@@ -131,5 +154,6 @@ $(function(){
 			queue: false
         }
 	});
-	refresh();
+	$('#icon').click(function() { goToHome(); });
+	goToHome();
 });
