@@ -24,14 +24,69 @@ body{
 #menu{
 	background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
     background: rgba(0,0,0, .6); /* Black menu + 60% opacity */
-	width: 200px;
+	width: 150px;
 	height: 100%;
     
-    color: red; /* for text now */
+    margin: 0 0 0 0;
     
-	position: absolute; /* hacky but push menu on top */
+    color: red; /* for text right now */
+    
+	position: fixed; /* left side fixed */
+    /*
     top: 0;
     left: 100;
     z-index: 999;
+    */
+}
+
+#nametag{
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
+    background: rgba(0,0,0, .6); /* Black menu + 60% opacity */
+	width: 93%;
+	height: 100px;
     
-}/
+    padding: 10;
+    
+    position: relative; 
+    
+    color: white; /* for text now */
+    
+    /*
+    top: 0;
+    left: 100;
+    */
+    z-index: 999;
+
+}
+
+#summary{
+    float: left;
+    margin: 7 0 0 10;
+}
+
+#photo{
+    margin: 3 0 0 180; 
+}
+
+#face{
+    float: left;
+    padding: 1px;
+    border: 1px solid 06E06D;
+    
+    /*#021a40;*/
+
+
+}
+
+.verticalLine {
+    width:1px;
+    height:100px;
+    background: rgba(0,0,0, .7);
+    float:left;
+    margin: 0 0 0 20;
+}
+
+#tagline{
+    color: gray;
+
+}
