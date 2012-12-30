@@ -108,11 +108,12 @@ function fill(container, id, callback) {
 
 function goToHome() {
 	// clean up markdown in container
+	clear('#container');
+	clear('#container2');
 	$('#container').html("");
 	// fill in the container with the files
 	fill('#container', "");
 	// remove all items in side bar container
-	clear('#container2');
 	// set view to home
 	view = 'home';
 	// toggle back container to not showing markdown
@@ -135,8 +136,6 @@ $(function(){
         sortBy : 'name',
         layoutMode : 'masonry',
 		animationOptions: {
-			duration: 200,
-			easing: 'linear'
         }
 	});
 	$('#container2').isotope({
