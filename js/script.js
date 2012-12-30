@@ -2,8 +2,27 @@ var files = ['test1','test2','test3','test4','test5','test6','test7'];
 
 var view = 'home';
 
+var canClick = true;
+
 function generateDivs(file) {
-	return $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
+	var item = $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
+	item.click(function() {
+		if (!canClick)
+			return;
+		if (view == 'home') {
+			clear('#container');
+			fill('#container2', this.id);
+		} else {
+			var missFile = getMissingFile('#container2');
+			if (missFile)
+				$('#container2').isotope('insert', generateDivs(missFile))
+							.isotope('remove', $('#container2 #' + this.id));
+		}
+		reload('#container2');
+		view = this.id;
+		load_markdown('markdown/' + view + '.md', $('#container'));
+	});
+	return item;
 }
 
 function clear(container) {
@@ -11,22 +30,33 @@ function clear(container) {
 	var divs = $(s);
 	for(var index in $(s)) {
 		var div = divs[index].id;
-		$(container).masonry('remove', $(container + ' #' + div));
+		$(container).isotope('remove', $(container + ' #' + div));
 	}
 }
 
 function reload(container) {
-	$(container).masonry('reload');	
-    
     /* update css for masonry container */
     
     // set height and overflow
     $('#container').css({'background': 'rgba(54,25,25)', 'background': 'rgba(0,0,0,.6)'});
     $('#container').css({'color':'#B1BBB2'});
-    $(".masonry").css({'height': '500px', 'overflow': 'auto'});
+    $(".isotope").css({'height': '500px', 'overflow': 'auto'});
     // set background with transparency, rbg for fall back
     //$(".masonry").css({'background': 'rgba(54,25,25,.6)', 'background': 'rgba(54,25,25)'});
     
+}
+
+function getMissingFile(container) {
+	var s = container + ' .item';
+	var not_removed = _.filter($(s), function(ele) { console.log(ele); return ele.style.opacity == 1; })
+	var ids = _.map(not_removed, function(ele) { return ele.id });
+	for (i in files) {
+		var file = files[i];
+		var contains_file = _.foldl(ids, function(memo, ele) { return memo || (ele == file)}, false );
+		if(!contains_file) {
+			return file;
+		}
+	}
 }
 
 function fill(container, id) {
@@ -34,24 +64,15 @@ function fill(container, id) {
 		var file = files[i];
 		if (file != id) {
 			var div = generateDivs(file);
-			$(container).append(div).masonry('appended', div);
+			$(container).isotope('insert', div);
 		}
 	}
 }
 
-function rebind() {
-	$(".item").click(function() {
-		if (view == 'home') {
-			clear('#container');
-		} else {
-			clear('#container2');
-		}
-		fill('#container2', this.id);
-		reload('#container2');
-		view = this.id;
-		rebind();
-		load_markdown('markdown/' + view + '.md', $('#container'));
-	});
+function refresh() {
+	fill('#container', "");
+	clear('#container2');
+	view = 'home';
 }
 
 /**
@@ -60,24 +81,35 @@ function rebind() {
  **/
 
 $(function(){
-	$('#container').masonry({
+	$('#container').isotope({
 		itemSelector : '.item',
-		isAnimated: true,
-		columnWidth: 240,
+	    getSortData : {
+            name : function($elem) {
+		        return $elem.attr('id');
+            }
+        },
+        sortBy : 'name',
+        layoutMode : 'masonry',
 		animationOptions: {
 			duration: 200,
+			easing: 'linear',
 			queue: false
-		}
+        }
 	});
-	fill('#container', "");
-	$('#container2').masonry({
+	$('#container2').isotope({
 		itemSelector : '.item',
-		isAnimated: true,
-		columnWidth: 10,
+	    getSortData : {
+            name : function($elem) {
+		        return $elem.attr('id');
+            }
+        },
+        sortBy : 'name',
+        layoutMode : 'masonry',
 		animationOptions: {
 			duration: 200,
+			easing: 'linear',
 			queue: false
-		}
+        }
 	});
-	rebind();
+	refresh();
 });
