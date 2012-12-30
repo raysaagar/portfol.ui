@@ -4,34 +4,62 @@ var view = 'home';
 
 var canClick = true;
 
-function generateDivs(file) {
+function generateDivs(id) {
+	var str_divs = _.foldl(files, function(memo, ele) { 
+		if (ele != id) {
+			var str = '<div class="item" id="' + ele + '"><img src="images/' + ele + '.jpg"></div>';
+		} else {
+			var str = ""
+		}
+		return memo + str;
+	}, "");
+	return $(str_divs).click(function() {
+		if (!canClick)
+			return;
+		var callback_method = function() { 
+			load_markdown('markdown/' + view + '.md', $('#container'));
+			reload('#container2');
+		};
+		if (view == 'home') {
+			view = this.id;
+			clear('#container', callback_method);
+			fill('#container2', view);
+		} else {
+			view = this.id;
+			callback_method();
+			var missFile = getMissingFile('#container2');
+			if (missFile)
+				$('#container2').isotope('insert', generateDiv(missFile))
+							.isotope('remove', $('#container2 #' + view));
+		}
+	});
+}
+
+function generateDiv(file) {
 	var item = $('<div class="item" id="' + file + '"><img src="images/' + file + '.jpg"></div>');
 	item.click(function() {
 		if (!canClick)
 			return;
 		if (view == 'home') {
-			clear('#container');
+			clear('#container', function() { 
+				load_markdown('markdown/' + view + '.md', $('#container'));
+				reload('#container2');
+			});
 			fill('#container2', this.id);
 		} else {
 			var missFile = getMissingFile('#container2');
 			if (missFile)
-				$('#container2').isotope('insert', generateDivs(missFile))
+				$('#container2').isotope('insert', generateDiv(missFile))
 							.isotope('remove', $('#container2 #' + this.id));
 		}
-		reload('#container2');
 		view = this.id;
-		load_markdown('markdown/' + view + '.md', $('#container'));
 	});
 	return item;
 }
 
-function clear(container) {
+function clear(container, callback) {
 	var s = container + ' .item';
-	var divs = $(s);
-	for(var index in $(s)) {
-		var div = divs[index].id;
-		$(container).isotope('remove', $(container + ' #' + div));
-	}
+	$(container).isotope('remove', $(s), callback);
 }
 
 function reload(container) {
@@ -48,7 +76,7 @@ function reload(container) {
 
 function getMissingFile(container) {
 	var s = container + ' .item';
-	var not_removed = _.filter($(s), function(ele) { console.log(ele); return ele.style.opacity == 1; })
+	var not_removed = _.filter($(s), function(ele) { return ele.style.opacity == 1; })
 	var ids = _.map(not_removed, function(ele) { return ele.id });
 	for (i in files) {
 		var file = files[i];
@@ -59,14 +87,8 @@ function getMissingFile(container) {
 	}
 }
 
-function fill(container, id) {
-	for(i in files) {
-		var file = files[i];
-		if (file != id) {
-			var div = generateDivs(file);
-			$(container).isotope('insert', div);
-		}
-	}
+function fill(container, id, callback) {
+	$(container).isotope('insert', generateDivs(id), callback);
 }
 
 function refresh() {
@@ -91,9 +113,7 @@ $(function(){
         sortBy : 'name',
         layoutMode : 'masonry',
 		animationOptions: {
-			duration: 200,
-			easing: 'linear',
-			queue: false
+			height: 'toggle'
         }
 	});
 	$('#container2').isotope({
