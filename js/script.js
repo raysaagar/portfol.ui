@@ -19,17 +19,18 @@ function bindItemClick(items) {
 				$('#container').addClass('markdown');
 			});
 			fill('#container2', view);
+		} else if (view == this.id) {
 		} else {
 			view = this.id;
 			// We don't need to wait for anything to load
 			load_markdown('markdown/' + view + '.md', $('#container'));
 			// Get the Missing File
 			var missFile = getMissingFile('#container2');
-			if (missFile)
-				$('#container2').isotope('insert', generateDiv(missFile))
-							.isotope('remove', $('#container2 #' + view));
+			if (missFile) {
+				$('#container2').isotope('remove', $('#container2 #' + view))
+								.isotope('insert', generateDiv(missFile));
+			}
 		}
-		jQEvent.preventDefault();
 	});
 }
 
@@ -188,6 +189,8 @@ $(function(){
         sortBy : 'name',
         layoutMode : 'masonry',
 		animationOptions: {
+			duration: 400,
+			queue: false
         }
 	});
 	$('#container2').isotope({
