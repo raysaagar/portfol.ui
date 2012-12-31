@@ -56,8 +56,8 @@ body{
 #controls{
     background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
     background: rgba(0,0,0, .2); /* Black menu + 60% opacity */
-	width: 50%;
-	height: 20px;
+	width: 60%;
+	height: 25px;
     padding: 10;
     position: relative; 
     
