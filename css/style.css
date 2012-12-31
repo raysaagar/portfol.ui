@@ -8,16 +8,18 @@ body{
 	padding: 0px;
     /*background-color: blue;*/
     /* background image full screen with css3 - we're being progressive! */
-    /* photo credit to David Kennard for the testing image */
-    background: url('http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg') no-repeat center center fixed; 
+    /* photo credit to David Kennard for the testing image 
+    background: url('http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg') no-repeat center center fixed; */
+    /* photo credit to Desktop Nexus */
+    background: url('../img/sunoverhill.jpg') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
     /* some sort of IE hack */
     /* from: http://css-tricks.com/perfect-full-page-background-image/ */
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg', sizingMethod='scale');
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg', sizingMethod='scale')";
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/sunoverhill.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/sunoverhill.jpg', sizingMethod='scale')";
     
 }
 
