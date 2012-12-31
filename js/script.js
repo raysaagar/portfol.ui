@@ -29,6 +29,7 @@ function bindItemClick(items) {
 				$('#container2').isotope('insert', generateDiv(missFile))
 							.isotope('remove', $('#container2 #' + view));
 		}
+		jQEvent.preventDefault();
 	});
 }
 
@@ -61,6 +62,12 @@ function generateDivs(id) {
  */
 function generateDiv(file) {
 	var item = genDivStr(file);
+	return bindItemClick($(item));
+}
+
+function generateDivFromLoc(loc) {
+	var fileName = loc.split('images/')[1].split('.jpg')[0];//.split(".jpg")[0];
+	var item = genDivStr(fileName);
 	return bindItemClick($(item));
 }
 
@@ -124,7 +131,52 @@ function goToHome() {
  * Fire after DOM load
  *
  **/
+/**
+$(function(){
+	var images = _.map(files, function(ele) {
+		return 'images/' + ele + '.jpg';
+	});
+	Core.preloader.queue(images).preload(function(ui) {
+		$('#container').isotope({
+			itemSelector : '.item',
+		    getSortData : {
+	            name : function($elem) {
+			        return $elem.attr('id');
+	            }
+	        },
+	        sortBy : 'name',
+	        layoutMode : 'masonry',
+			animationOptions: {
+	        }
+		});
+		$('#container2').isotope({
+			itemSelector : '.item',
+		    getSortData : {
+	            name : function($elem) {
+			        return $elem.attr('id');
+	            }
+	        },
+	        sortBy : 'name',
+	        layoutMode : 'masonry',
+			animationOptions: {
+				duration: 200,
+				easing: 'linear',
+				queue: false
+	        }
+		});
+		$('#icon').click(function() { goToHome(); });
+		goToHome();
+	})
+});
+*/
 
+function preload(loc) {
+    $('<img/>').attr({ src : loc }).load(function(image) {
+		$('#container').isotope('insert', generateDivFromLoc($(this).attr('src')));
+    });
+}
+
+// Usage:
 $(function(){
 	$('#container').isotope({
 		itemSelector : '.item',
@@ -154,5 +206,10 @@ $(function(){
         }
 	});
 	$('#icon').click(function() { goToHome(); });
-	goToHome();
+	var images = _.map(files, function(ele) {
+		return 'images/' + ele + '.jpg';
+	});
+	_.each(images, function(loc) {
+		preload(loc);
+	});
 });
