@@ -1,4 +1,7 @@
 var files = ['test1','test2','test3','test4','test5','test6','test7'];
+var titles = ['blah1','blah2','blah3','blah4','blah5','blah6','blah7'];
+var titlesArray = new Array();
+
 
 var view = 'home';
 
@@ -39,7 +42,7 @@ function bindItemClick(items) {
  */
 
 function genDivStr(ele) {
-	return '<div class="item" id="' + ele + '"><img src="images/' + ele + '.jpg"></div>'
+	return '<div class="item" id="' + ele + '" title="' + titlesArray[ele] + '"><img src="images/' + ele + '.jpg"></div>'
 }
 
 /**
@@ -179,6 +182,12 @@ function preload(loc) {
 
 // Usage:
 $(function(){
+    // generate associative titles array
+    for(var i=0;i<files.length;i++){
+        titlesArray[files[i]] = titles[i];
+    }
+
+
 	$('#container').isotope({
 		itemSelector : '.item',
 	    getSortData : {
@@ -215,4 +224,5 @@ $(function(){
 	_.each(images, function(loc) {
 		preload(loc);
 	});
+    $(".item isotope-item").tipTip({maxWidth: "auto", edgeOffset: 10});
 });

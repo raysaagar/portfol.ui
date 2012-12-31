@@ -1,13 +1,12 @@
 html, body {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 body{
 	margin: 0px;
 	padding: 0px;
     /*background-color: blue;*/
-    height: 100%;
     /* background image full screen with css3 - we're being progressive! */
     /* photo credit to David Kennard for the testing image */
     background: url('http://static2.davidkennardphotography.com/Img/3016-Grassy-field-at-sunset.jpg') no-repeat center center fixed; 
@@ -57,8 +56,8 @@ body{
 #controls{
     background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
     background: rgba(0,0,0, .2); /* Black menu + 60% opacity */
-	width: 50%;
-	height: 20px;
+	width: 60%;
+	height: 25px;
     padding: 10;
     position: relative; 
     
@@ -117,7 +116,7 @@ body{
 }
 
 #credits{
-    color: gray;
+
     font-size: 80%;
     margin: 0 10 0 0;
 }
