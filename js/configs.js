@@ -4,12 +4,38 @@
 
 var name = "Elridge Powerhacks";
 var attributes = ["Programmer", "Hacker", "Student"];
+// choose icons from /css/FontAwesome or /css/brandico
+// icons from the brandico set are prepended with b-, as shown in the example below
 var icon_images = ["icon-user", "b-icon-github-text", "b-icon-linkedin-rect", "b-icon-twitter-bird"];
 var icon_titles = ["Resume","Github","LinkedIn","Twitter"];
 var icon_links = ["#","#","#","#"];
 var photo = "img/saagar2.jpg";
+var photo_title = "Welcome to Portfol.ui!";
+var photo_height = 90; // pixels
+var photo_width = 90; // pixels
 
+/************************
+ * Parameters for Tiles
+ ************************/
+var files = ['test1',
+             'test2',
+             'test3',
+             'test4',
+             'test5',
+             'test6',
+             'test7'];
+var titles = ['blah1',
+              'blah2',
+              'blah3',
+              'blah4',
+              'blah5',
+              'blah6',
+              'blah7'];
 
+/**********************************************************************************
+ * Content Generator - Do NOT modify below this comment unless you are comfortable
+ **********************************************************************************/
+ 
 // Generate content using user-defined parameters
 $(function(){
 
@@ -32,6 +58,9 @@ $(function(){
     }
     tags = tags + '</div>';
     
+    // generate face photo
+    var photo_tag = '<img id="face" src="'+photo+'" title="'+photo_title+'" style="height: '+photo_height+'px; width: '+photo_width+'px">';
+    
     /**************
      * Load items
      **************/
@@ -41,5 +70,8 @@ $(function(){
     
     // load tag items
     $('#tagline').html(tags);
+    
+    // load photo
+    $('#photo').html(photo_tag);
 });
 

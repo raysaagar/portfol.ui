@@ -4,43 +4,39 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
     <head>
-        
         <title> Portfol.ui </title>
         
-       
-        
         <!-- Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/isotope.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/brandico/brandico.css">
         <!--[if IE 7 ]><link rel="stylesheet" type="text/css" href="css/FontAwesome/font-awesome-ie7.css"><![endif]-->
         <link rel="stylesheet" type="text/css" href="css/tipTip.css">
-        
-        <script>
-            // load tipTip tooltips
-            $(function(){
-                $(".icons").tipTip({maxWidth: "auto", edgeOffset: 10});
-                $("#credits").tipTip({maxWidth: "auto", edgeOffset: 10});
-                //$(".item isotope-item").tipTip({maxWidth: "auto", edgeOffset: 10});
-            });
-        </script>
 
 	</head>
     
 	<body>
         
+        <!-- Controls and Name Tag -->
         <div class="row-fluid">
             <div class="span3">
                 <!-- Menu Box on left top corner -->
                 <div id="controls">
-                    <span style="font-size: 24px;">
+                    <span style="font-size: 25px;">
                         <a id='icon' href="#"><i class="icons icon-home" title="Reset Tiles!"></i></a>
                         <span style="color: gray;"> | </span>
                     </span>
-                    <a href="https://github.com/raysaagar/portfol.ui"><span id="credits" title="Fork me on Github!">See Portfol.ui on Github!</span></a>
+                    <span>
+                        Optimized for:
+                        <!-- icons from: https://github.com/paulirish/browser-logos -->
+                        <img src="img/chrome-512.png" style="height: 20px; width: 20px">
+                        <img src="img/firefox-512.png" style="height: 20px; width: 20px">
+                    </span>
+                    <br>
+                    <a href="https://github.com/raysaagar/portfol.ui"><div id="credits" title="Fork me on Github!">See Portfol.ui on Github!</div></a>
+                    
                 </div>
             </div>
             <div class="span6"></div>
@@ -48,46 +44,18 @@
                 <!-- Name card on the right top corner -->
                 <div id="nametag">
                     <div id="summary">
-                        <div id="name">
-                            <!--Elridge Powerhacks -->
-                        </div>
-                        <div id="tagline">
-                        <!--
-                            <div class="tagitem"> Programmer </div>
-                            <div class="tagitem"> Hacker </div>
-                            <div class="tagitem"> Student </div>
-                            <div class="tagitem"> 
-                                <a href="#"><i class="icons icon-user" title="Resume"></i></a> |
-                                <a href="#"><i class="icons b-icon-github-text" title="Github"></i></a> | 
-                                <a href="#"><i class="icons b-icon-linkedin-rect" title="LinkedIn"></i></a> | 
-                                <a href="#"><i class="icons b-icon-twitter-bird" title="Twitter"></i></a>
-                            </div>
-                            
-                        -->
-                        </div>
+                        <div id="name"><!-- Auto Generated --></div>
+                        <div id="tagline"><!-- Auto Generated --></div>
                     </div>
                     <div class="verticalLine"></div>
-                    
-                    <div id="photo">
-                        <img id="face" src="img/saagar2.jpg" style="height: 90px; width: 90px">
-                    </div>
+                    <div id="photo"><!-- Auto Generated --></div>
                     
                 </div>
             </div>
         </div>        
         
+        <!-- Isotope containers -->
 		<div id="content-area" class="row-fluid" style="height:75%;">
-            <!--
-            <div class="span2">
-            </div>
-            <div id="menu" class="span2">
-                Name <br>
-                Link 1 <br>
-                Link 2 <br>
-                Link 3 <br>
-                Link 4 <br>
-            </div>
-            -->
 			<div class="span9">
 				<div id = "container">
 				</div>
@@ -100,18 +68,23 @@
 			</div>
 		</div>
         
-         <!-- The Scripts (should probably load at end...) -->
+        <!-- The Scripts (should probably load at end...) -->
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js/jquery.isotope.min.js"></script>
         <script src="js/underscore-min.js"></script>
         <script src="js/showdown/showdown.js"></script>
-        <script src="js/tipTipv13/jquery.tipTip.minified.js"></script>
-        <script src="js/required.js"/></script>
-        <script src="js/script.js"></script>
         <script src="js/configs.js"></script>
-        
-		<script>
-		</script>
+        <script src="js/tipTipv13/jquery.tipTip.minified.js"></script>
+        <!--<script src="js/required.js"/></script>-->
+        <script src="js/script.js"></script>
+        <script>
+            // load tipTip tooltips
+            $(function(){
+                $(".icons").tipTip({maxWidth: "auto", edgeOffset: 10});
+                $("#credits").tipTip({maxWidth: "auto", edgeOffset: 10});
+                $("#face").tipTip({maxWidth: "auto", edgeOffset: 10});
+            });
+        </script>
 	</body>
 </html>

@@ -1,3 +1,6 @@
+
+/* STYLE FOR TILES AND CONTAINERS */
+
 /* span item sizes */
 .span10 .item {
 	height: 130px;
@@ -24,7 +27,8 @@
 	margin: 10px;
 	float: left;
 }
-
+/* end span item sizes */
+/* span image sizes */
 .span10 img {
 	width: 188px;
 	height : 128px;
@@ -38,33 +42,34 @@
 	width: 188px;
 	height : 128px;
 }
-/* end span item sizes */
+/* end span image sizes */
 
 img {
 	width: 148px;
 	height: 148px;
 }
-
+/* styling for content containers */
 #content-area {
     height: 100%;
     margin: 20 0 0 0;
 }
 
 #container{
-    margin: 0 0 0 50;
-    padding: 10;
+    margin: -20 0 0 50;
+    padding: 25;
 }
 
 #container2{
     margin: 0 0 0 10;
-    
 }
 
+/* SCROLL BAR */
 
-/* scroll bar effect from http://css-tricks.com/custom-scrollbars-in-webkit/ */
-/* want to use for masonry containers */
+/***
+ * scroll bar effect from http://css-tricks.com/custom-scrollbars-in-webkit/ 
+ * used in data containers 
+ ***/
 
-/* Let's get this party started */
 #container::-webkit-scrollbar{
     width: 6px;
 }

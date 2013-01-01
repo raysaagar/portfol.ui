@@ -1,11 +1,30 @@
-var files = ['test1','test2','test3','test4','test5','test6','test7'];
-var titles = ['blah1','blah2','blah3','blah4','blah5','blah6','blah7'];
 var titlesArray = new Array();
 
-
 var view = 'home';
-
 var canClick = true;
+
+// create a new Showdown converter for the .MD to .HTML
+var converter = new Showdown.converter();
+
+/*******************************************************************************
+ * map
+ *  |--> data
+ *  |--> mdfile (this is the markdown file we want)
+ *  |--> div    (this is the div we want to fill with the converted markdown)
+ *******************************************************************************/
+function load_markdown(map){
+    load_markdown(map.data.mdfile, map.data.div);
+};
+
+function load_markdown(mdfile, div){
+    $.get(mdfile, {"_" : $.now()} , function(data) {
+        convert_markdown(data, div);
+    });
+};
+
+function convert_markdown(mdcontents,div) {
+    div.html(converter.makeHtml(mdcontents));
+}
 
 /**
  * Binding on Click to an item
@@ -131,49 +150,6 @@ function goToHome() {
 	$('#container').removeClass('markdown');
 }
 
-/**
- * Fire after DOM load
- *
- **/
-/**
-$(function(){
-	var images = _.map(files, function(ele) {
-		return 'images/' + ele + '.jpg';
-	});
-	Core.preloader.queue(images).preload(function(ui) {
-		$('#container').isotope({
-			itemSelector : '.item',
-		    getSortData : {
-	            name : function($elem) {
-			        return $elem.attr('id');
-	            }
-	        },
-	        sortBy : 'name',
-	        layoutMode : 'masonry',
-			animationOptions: {
-	        }
-		});
-		$('#container2').isotope({
-			itemSelector : '.item',
-		    getSortData : {
-	            name : function($elem) {
-			        return $elem.attr('id');
-	            }
-	        },
-	        sortBy : 'name',
-	        layoutMode : 'masonry',
-			animationOptions: {
-				duration: 200,
-				easing: 'linear',
-				queue: false
-	        }
-		});
-		$('#icon').click(function() { goToHome(); });
-		goToHome();
-	})
-});
-*/
-
 function preload(loc) {
     $('<img/>').attr({ src : loc }).load(function(image) {
 		$('#container').isotope('insert', generateDivFromLoc($(this).attr('src')));
@@ -182,7 +158,7 @@ function preload(loc) {
 
 // Usage:
 $(function(){
-    // generate associative titles array
+    // generate associative titles array for tooltips
     for(var i=0;i<files.length;i++){
         titlesArray[files[i]] = titles[i];
     }
