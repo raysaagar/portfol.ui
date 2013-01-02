@@ -65,7 +65,7 @@ function bindItemClick(items) {
  */
 
 function genDivStr(ele) {
-	return '<div class="item" id="' + ele + '" title="' + titlesArray[ele] + '"><img src="images/' + ele + '.jpg"></div>'
+	return '<div class="item" id="' + ele + '" title="' + titlesArray[ele] + '"><div class="caption">' + titlesArray[ele] + '</div><img src="images/' + ele + '.jpg"></div>'
 }
 
 /**

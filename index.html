@@ -77,6 +77,7 @@
         <script src="js/configs.js"></script>
         <script src="js/tipTipv13/jquery.tipTip.minified.js"></script>
         <script src="js/portfol.ui.js"></script>
+        <!--<script src="js/caption.js"></script>-->
         <script>
             // load tipTip tooltips
             $(function(){
@@ -84,6 +85,30 @@
                 $("#credits").tipTip({maxWidth: "auto", edgeOffset: 10});
                 $("#face").tipTip({maxWidth: "auto", edgeOffset: 10});
             });
+            
+            // $(function(){
+                $('.item isotope-item').mouseenter(function(){
+                    
+                    var image= $(this).find('img'),
+                        caption = $(this).find('div');
+                    //var caption = $(image).attr("title");
+                    
+                    caption.width(image.width());
+                    caption.height(image.height());
+                    alert(caption);
+                    caption.fadeIn();
+                }).mouseleave(function(){
+                     var image= $(this).find('img'),
+                        caption = $(this).find('div');
+                     // var caption = $(image).attr("title");
+                    
+                    caption.width(image.width());
+                    caption.height(image.height());
+                    caption.fadeOut();
+                });
+            // });
         </script>
+        
+        
 	</body>
 </html>
