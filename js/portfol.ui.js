@@ -41,7 +41,7 @@ function bindItemClick(items) {
 			view = this.id;
 			// We need to wait for all elements to have been removed
 			clear('#container', function() { 
-				load_markdown('markdown/' + view + '.md', $('#container'));
+				load_markdown(md_dir + view + '.md', $('#container'));
 				$('#container').addClass('markdown');
 			});
 			fill('#container2', view);
@@ -49,7 +49,7 @@ function bindItemClick(items) {
 		} else {
 			view = this.id;
 			// We don't need to wait for anything to load
-			load_markdown('markdown/' + view + '.md', $('#container'));
+			load_markdown(md_dir + view + '.md', $('#container'));
 			// Get the Missing File
 			var missFile = getMissingFile('#container2');
 			if (missFile) {
@@ -65,7 +65,7 @@ function bindItemClick(items) {
  */
 
 function genDivStr(ele) {
-	return '<div class="item" id="' + ele + '" title="' + titlesArray[ele] + '"><img src="images/' + ele + '.jpg"></div>'
+	return '<div class="item" id="' + ele + '" title="' + titlesArray[ele] + '"><img src="'+ img_dir + ele + '.jpg"></div>'
 }
 
 /**
@@ -93,7 +93,7 @@ function generateDiv(file) {
 }
 
 function generateDivFromLoc(loc) {
-	var fileName = loc.split('images/')[1].split('.jpg')[0];//.split(".jpg")[0];
+	var fileName = loc.split(img_dir)[1].split('.jpg')[0];//.split(".jpg")[0];
 	var item = genDivStr(fileName);
 	return bindItemClick($(item));
 }
@@ -199,7 +199,7 @@ $(function(){
 	});
 	$('#icon').click(function() { goToHome(); });
 	var images = _.map(files, function(ele) {
-		return 'images/' + ele + '.jpg';
+		return img_dir + ele + '.jpg';
 	});
 	_.each(images, function(loc) {
 		preload(loc);

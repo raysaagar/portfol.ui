@@ -11,12 +11,16 @@ var icon_titles = ["Resume","Github","LinkedIn","Twitter"];
 var icon_links = ["#","#","#","#"];
 var photo = "img/saagar2.jpg";
 var photo_title = "Welcome to Portfol.ui!";
-var photo_height = 90; // pixels
-var photo_width = 90; // pixels
+var photo_height = 90;  // pixels
+var photo_width = 90;   // pixels
 
 /************************
  * Parameters for Tiles
  ************************/
+// location for the markdown and image files
+// for ease, markdown and image file names should be the same.
+var md_dir = 'markdown/';
+var img_dir = 'images/';
 var files = ['test1',
              'test2',
              'test3',
@@ -24,6 +28,7 @@ var files = ['test1',
              'test5',
              'test6',
              'test7'];
+// title for each tile. items have a one-to-one correspondence.
 var titles = ['blah1',
               'blah2',
               'blah3',
