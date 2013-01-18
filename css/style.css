@@ -90,6 +90,17 @@ body{
     text-decoration: none;
 }
 
+#icon{
+    color: #08C;
+    text-decoration: none;
+}
+
+#icon:hover{
+    color:#005580;
+    text-decoration: none;
+}
+
+
 /* STYLE FOR MARKDOWN */
 .markdown {
     background : rgba(0, 0, 0, .6);
