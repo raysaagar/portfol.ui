@@ -25,7 +25,7 @@ Portfol.ui is an easy to use, simple to setup portfolio system. The portfolio co
 * [`Bootstrap Responsive`](http://twitter.github.com/bootstrap/)
 * [`Brandico`](https://github.com/fontello/brandico.font)
 * [`Font-Awesome`](http://fortawesome.github.com/Font-Awesome/)
-* [`tipTip`]((http://code.drewwilson.com/entry/tiptip-jquery-plugin))
+* [`tipTip`](http://code.drewwilson.com/entry/tiptip-jquery-plugin)
 
 #### Other ####
 * [`Markdown`](http://daringfireball.net/projects/markdown/)
